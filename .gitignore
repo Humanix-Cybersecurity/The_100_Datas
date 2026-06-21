@@ -1,0 +1,20 @@
+# ─────────────────────────────────────────────────────────────
+# CONFIDENTIEL — ne JAMAIS pousser dans le dépôt élèves
+# (solutions, flags, générateurs avec réponses, outils auteur)
+# ─────────────────────────────────────────────────────────────
+docs/
+authoring/
+
+# Outillage local / preview
+.claude/
+
+# Progression de jeu (volume console)
+console/state/
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

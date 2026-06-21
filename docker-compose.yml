@@ -1,0 +1,63 @@
+services:
+  # ─────────────────────────────────────────────────────────────
+  # CONSOLE DU CONSEIL — le cœur du jeu : valide les flags,
+  # débloque les actes, affiche le compte à rebours de l'Abattage.
+  # ─────────────────────────────────────────────────────────────
+  console:
+    build: ./console
+    container_name: ark_console
+    ports:
+      # Port hôte 5005 (5000 est squatté par AirPlay Receiver sur macOS)
+      - "5005:5000"
+    volumes:
+      - ./console:/app
+      - console_state:/app/state
+    environment:
+      FLASK_ENV: production
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────
+  # TERMINAL GO-SCI STATION — le labo d'analyse (Jupyter).
+  # Les notebooks d'énigmes + les datasets d'Elsa sont montés ici.
+  # ─────────────────────────────────────────────────────────────
+  terminal:
+    build: ./jupyter
+    container_name: ark_terminal
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./jupyter/notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/work/data:ro
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────
+  # REGISTRE CENTRAL DE L'ARCHE — PostgreSQL (énigme 3).
+  # Tables habitants × prédictions CASSANDRA × logs du Conseil.
+  # ─────────────────────────────────────────────────────────────
+  registre:
+    image: postgres:16-alpine
+    container_name: ark_registre
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: auditeur
+      POSTGRES_PASSWORD: arche2152
+      POSTGRES_DB: arche
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────
+  # ADMINER — interface SQL visuelle (filet de sécurité débutants).
+  # ─────────────────────────────────────────────────────────────
+  adminer:
+    image: adminer:latest
+    container_name: ark_adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - registre
+    restart: unless-stopped
+
+volumes:
+  console_state:

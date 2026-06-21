@@ -1,0 +1,111 @@
+:root {
+  --bg: #05080a;
+  --panel: #0c1418;
+  --line: #16323a;
+  --green: #36e0a4;
+  --green-dim: #1c8c6a;
+  --amber: #ffb347;
+  --red: #ff4d5e;
+  --text: #c7e6dd;
+  --muted: #5d7a74;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% -10%, #0a1a1f, var(--bg));
+  color: var(--text);
+  font-family: "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+  min-height: 100vh;
+}
+
+.scanlines {
+  position: fixed; inset: 0; pointer-events: none; z-index: 99;
+  background: repeating-linear-gradient(
+    rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.18) 2px 4px);
+  mix-blend-mode: multiply;
+}
+
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 24px; border-bottom: 1px solid var(--line);
+  background: rgba(5,8,10,0.85); position: sticky; top: 0; z-index: 10;
+}
+.brand { letter-spacing: 2px; color: var(--green); font-weight: bold; }
+.logo { color: var(--amber); }
+.countdown {
+  color: var(--red); font-weight: bold; letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255,77,94,0.6);
+}
+
+main { max-width: 880px; margin: 0 auto; padding: 28px 20px 80px; }
+
+h1 { color: var(--green); letter-spacing: 4px; margin: 0 0 12px; }
+.lore { color: var(--text); line-height: 1.6; }
+.lore em { color: var(--amber); font-style: normal; }
+.lore strong { color: var(--green); }
+.progress { margin-top: 16px; color: var(--muted); }
+.progress strong { color: var(--green); }
+
+.victory {
+  border: 1px solid var(--green); background: rgba(54,224,164,0.08);
+  padding: 20px; margin: 24px 0; text-align: center; border-radius: 6px;
+}
+.victory h2 { color: var(--green); margin: 0 0 8px; }
+
+.actes { margin-top: 30px; display: grid; gap: 16px; }
+
+.acte {
+  border: 1px solid var(--line); border-radius: 6px; padding: 18px;
+  background: var(--panel); transition: border-color .2s;
+}
+.acte.active { border-color: var(--green-dim); box-shadow: 0 0 0 1px rgba(54,224,164,0.15); }
+.acte.solved { opacity: .85; }
+.acte.locked { opacity: .5; }
+
+.acte-head { display: flex; align-items: center; gap: 14px; }
+.acte-num {
+  font-size: 1.6rem; color: var(--green-dim); font-weight: bold;
+  border: 1px solid var(--line); border-radius: 5px; padding: 6px 10px;
+}
+.acte-head h3 { margin: 0; font-size: 1rem; color: var(--text); }
+.comp { color: var(--muted); font-size: .8rem; }
+.status { margin-left: auto; font-size: .75rem; letter-spacing: 1px; }
+.acte.active .status { color: var(--green); }
+.acte.solved .status { color: var(--green-dim); }
+.acte.locked .status { color: var(--muted); }
+
+.brief { color: var(--text); line-height: 1.5; margin: 14px 0; font-size: .92rem; }
+.muted { color: var(--muted); }
+.unlock {
+  color: var(--green); border-left: 2px solid var(--green-dim);
+  padding-left: 12px; margin: 14px 0 0; line-height: 1.5;
+}
+
+.flag-form { display: flex; gap: 10px; margin-top: 12px; }
+.flag-form input {
+  flex: 1; background: #05090b; border: 1px solid var(--line);
+  color: var(--green); padding: 10px 12px; border-radius: 4px;
+  font-family: inherit; letter-spacing: 1px;
+}
+.flag-form input:focus { outline: none; border-color: var(--green); }
+.flag-form button, .hint-btn {
+  background: var(--green-dim); color: #02110c; border: none;
+  padding: 10px 16px; border-radius: 4px; font-family: inherit;
+  font-weight: bold; cursor: pointer; letter-spacing: 1px;
+}
+.flag-form button:hover, .hint-btn:hover:not(:disabled) { background: var(--green); }
+.hint-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.hint-zone { margin-top: 12px; }
+.hint-btn { background: transparent; border: 1px solid var(--amber); color: var(--amber); }
+.hint-btn:hover:not(:disabled) { background: rgba(255,179,71,0.12); }
+.hint-text { color: var(--amber); margin-top: 10px; line-height: 1.5; font-size: .9rem; }
+
+.flash { margin-top: 10px; font-size: .9rem; }
+.flash.ok { color: var(--green); }
+.flash.err { color: var(--red); }
+
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.shake { animation: shake .3s; }

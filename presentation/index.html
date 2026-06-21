@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROTOCOLE CASSANDRA, Conseil de l'Arche</title>
+<link rel="stylesheet" href="deck.css?v=6">
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<!-- HUD HAUT -->
+<header class="hud-top">
+  <div class="brand">◢◤ ARCHE <span class="chip">·</span> SYSTÈME CASSANDRA</div>
+  <div class="globalclock idle" id="globalClock">
+    <div class="lbl">ABATTAGE DANS</div>
+    <div class="val" id="gv">07:30:00</div>
+  </div>
+</header>
+
+<!-- SLIDES -->
+<main class="stage" id="stage">
+
+  <!-- 1 · BOOT -->
+  <section class="slide active" data-boot data-pname="Initialisation" data-time="09h00" data-bg style="--bgimg:url(assets/station.jpg)">
+    <div class="eyebrow rise">Station Go-Sci · accès auditeur</div>
+    <pre class="boot rise" data-text="> CONNEXION AU MAINFRAME DE L'ARCHE...
+> AUTHENTIFICATION... OK
+> CHARGEMENT DU SYSTÈME CASSANDRA v2.152
+> ALERTE : niveaux de support-vie CRITIQUES
+> ALERTE : protocole d'ABATTAGE armé, exécution dans 07:30:00
+> message non lu de [E. REYE] :
+>   « Si vous lisez ceci, c'est qu'il est presque trop tard.
+>     CASSANDRA ment. Suivez la trace. La preuve est dans les chiffres. »
+> _"></pre>
+    <button class="cta rise" data-action="next">INITIALISER L'AUDIT ▸</button>
+    <div class="press rise small">Appuyez sur <b>ESPACE</b> ou <b>▸</b> pour avancer · <b>H</b> pour l'aide</div>
+  </section>
+
+  <!-- 2 · HISTOIRE -->
+  <section class="slide" data-pname="Briefing" data-time="09h05" data-bg style="--bgimg:url(assets/earth.jpg)">
+    <div class="eyebrow rise">Transmission prioritaire <span class="sched">09h05</span></div>
+    <h1 class="rise glitch" data-text="PROTOCOLE CASSANDRA">PROTOCOLE CASSANDRA</h1>
+    <p class="lead rise">
+      97 ans après l'apocalypse nucléaire, les derniers humains survivent sur
+      <b>l'Arche</b>. Le support-vie agonise. Pour économiser l'oxygène, le Conseil
+      va déclencher <em>l'Abattage</em> : des centaines d'habitants <em>envoyés à la
+      dérive dans l'espace</em>, sur la seule recommandation de l'IA <b>CASSANDRA</b>.
+    </p>
+    <p class="lead rise" style="margin-top:14px">
+      L'ingénieure <b>Elsa Reye</b> a découvert que CASSANDRA est <em>truquée</em> :
+      elle condamne <b>Factory Station</b> et épargne l'élite d'<b>Alpha</b>.
+      Elsa a disparu. Vous êtes l'<b>équipe d'audit</b>.
+    </p>
+    <div class="elsa rise">« Récupérez les 6 fragments. Prouvez le biais. Arrêtez le Culling. »<span class="sig">· Dr. Elsa Reye, Go-Sci Station</span></div>
+  </section>
+
+  <!-- 2bis · ÉQUIPAGE -->
+  <section class="slide" data-pname="L'équipage de l'Arche" data-time="09h10">
+    <div class="eyebrow rise">Dossiers du Conseil <span class="sched">09h10</span></div>
+    <h2 class="rise">L'équipage de l'Arche</h2>
+    <div class="cast rise">
+      <div class="card"><img src="assets/clarke.jpg" alt="Clarke Griffin"><div class="nm">Clarke Griffin</div><div class="rl">Figure de la résistance</div></div>
+      <div class="card"><img src="assets/bellamy.jpg" alt="Bellamy Blake"><div class="nm">Bellamy Blake</div><div class="rl">Chef de la sécurité</div></div>
+      <div class="card"><img src="assets/raven.jpg" alt="Raven Reyes"><div class="nm">Raven Reyes</div><div class="rl">Ingénieure · alliée d'Elsa</div></div>
+      <div class="card"><img src="assets/octavia.jpg" alt="Octavia Blake"><div class="nm">Octavia Blake</div><div class="rl">Envoyée au sol (les 100)</div></div>
+      <div class="card"><img src="assets/jaha.jpg" alt="Chancelier Jaha"><div class="nm">Chancelier Jaha</div><div class="rl">Préside le Conseil</div></div>
+      <div class="card"><img src="assets/kane.jpg" alt="Marcus Kane"><div class="nm">Marcus Kane</div><div class="rl">Conseiller intègre</div></div>
+      <div class="card"><img src="assets/lexa.jpg" alt="Lexa"><div class="nm">Lexa</div><div class="rl">Commandante, au sol</div></div>
+      <div class="card"><img src="assets/becca.jpg" alt="Becca"><div class="nm">Becca</div><div class="rl">Conceptrice de CASSANDRA</div></div>
+    </div>
+  </section>
+
+  <!-- 3 · RÈGLES -->
+  <section class="slide" data-pname="Règles & accès" data-time="09h15">
+    <div class="eyebrow rise">Protocole d'audit <span class="sched">09h15</span></div>
+    <h2 class="rise">Comment fonctionne la mission</h2>
+    <ul class="steps rise">
+      <li>6 <b>actes</b>, un par compétence data. Chacun cache un <b>fragment</b> de preuve.</li>
+      <li>Un fragment a la forme <span class="flag">ARK{...}</span>, on le valide dans la <b>Console du Conseil</b>.</li>
+      <li>Les actes se débloquent <b>dans l'ordre</b>. Le 6ᵉ suspend l'Abattage.</li>
+      <li>Bloqués ? La console délivre des <b>indices</b> (avec malus). Ces slides aussi.</li>
+    </ul>
+    <div class="urls rise">
+      <div class="url"><div class="name">🖥️ CONSOLE DU CONSEIL</div><div class="addr">localhost:5005</div><div class="meta">validation des fragments</div></div>
+      <div class="url"><div class="name">🔬 TERMINAL GO-SCI</div><div class="addr">localhost:8888</div><div class="meta">token : goscistation</div></div>
+      <div class="url"><div class="name">🗄️ REGISTRE (ADMINER)</div><div class="addr">localhost:8080</div><div class="meta">acte III · SQL</div></div>
+    </div>
+  </section>
+
+  <!-- 4 · ÉQUIPES + LANCEMENT -->
+  <section class="slide" data-pname="Constitution des équipes" data-time="09h20">
+    <div class="eyebrow rise">Mobilisation <span class="sched">09h20</span></div>
+    <h2 class="rise">Équipes d'audit & mise en route</h2>
+    <ul class="steps rise">
+      <li>Constituez des équipes de <b>2 à 4</b> auditeurs.</li>
+      <li>Dans le dépôt de la mission, lancez la station :</li>
+    </ul>
+    <div class="panel rise" style="max-width:620px;margin-top:16px">
+      <div class="kv"><span class="k">Terminal</span><span class="v flag">docker compose up --build</span></div>
+      <div class="kv"><span class="k">Puis ouvrez</span><span class="v">localhost:5005 · 8888 · 8080</span></div>
+    </div>
+    <div class="elsa rise">« Quand le mainframe répond, le chrono part. Ne le gaspillez pas. »<span class="sig">· E. Reye</span></div>
+  </section>
+
+  <!-- 5 · LANCEMENT DU CHRONO -->
+  <section class="slide" data-pname="Lancement du compte à rebours" data-time="09h30" data-bg style="--bgimg:url(assets/adrift.jpg)">
+    <div class="eyebrow rise">⚠ Armement du protocole <span class="sched">09h30</span></div>
+    <h2 class="rise" style="color:var(--red)">L'Abattage est armé.</h2>
+    <div class="big-count rise">07:30:00</div>
+    <p class="lead rise" style="margin-top:18px">Au top, vous avez <b>7 h 30</b> pour réunir les preuves d'Elsa, jusqu'à <b>17h00</b>.</p>
+    <button class="cta rise" data-action="start-game" style="background:var(--red);color:#1a0306">▶ LANCER LE COMPTE À REBOURS</button>
+    <div class="press rise small muted">(L'animateur appuie ici ou touche <b>G</b> pour démarrer le chrono global.)</div>
+  </section>
+
+  <!-- 6 · ACTE I -->
+  <section class="slide" id="act1" data-pname="Acte I · La fuite d'oxygène" data-minutes="30" data-time="09h30">
+    <div class="eyebrow rise">Acte I <span class="sched">09h30 · 30 min</span></div>
+    <h1 class="rise glitch" data-text="La fuite d'oxygène">La fuite d'oxygène</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent"><img src="assets/raven.jpg" alt="Raven Reyes"><figcaption>Raven a repéré des capteurs trafiqués. Lequel ment encore ?</figcaption></figure>
+        Les capteurs O2 de l'Arche crachent des relevés <b>corrompus</b> : doublons,
+        valeurs manquantes, dates illisibles. Nettoyez tout, et un relevé
+        <em>physiquement impossible</em> subsistera, maquillé pour cacher une fuite.
+        Quel <b>secteur</b> trahit-il ?
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">Nettoyage · Pandas</span></div>
+        <div class="kv"><span class="k">Terminal</span><span class="v">01_nettoyage.ipynb</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">pandas : <code>read_csv</code>, <code>drop_duplicates</code>, <code>dropna</code>, <code>to_datetime</code></span></div>
+      </div>
+    </div>
+    <div class="hints rise">
+      <div class="hintbtns">
+        <button class="hintbtn" data-hint="Charge le CSV puis fais df.info() : combien de doublons ? de valeurs manquantes ?">Indice 1</button>
+        <button class="hintbtn" data-hint="drop_duplicates(), puis dropna() sur 'secteur' et 'taux_o2', puis convertis les dates (to_datetime, errors='coerce'). Enfin, filtre les taux > 100 ou < 0.">Indice 2</button>
+      </div>
+      <div class="hintbox"></div>
+    </div>
+  </section>
+
+  <!-- 7 · ACTE II -->
+  <section class="slide" id="act2" data-pname="Acte II · L'unité fantôme" data-minutes="60" data-time="10h00">
+    <div class="eyebrow rise">Acte II <span class="sched">10h00 · 60 min</span></div>
+    <h1 class="rise glitch" data-text="L'unité fantôme">L'unité fantôme</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent"><img src="assets/bellamy.jpg" alt="Bellamy Blake"><figcaption>Bellamy traque un logement fantôme. Qui se cache dans l'Arche ?</figcaption></figure>
+        Une unité d'habitation engloutit à elle seule plus de ressources que des
+        stations entières, mais elle n'apparaît sur <b>aucun registre</b>. Quelqu'un
+        de haut placé s'y cache. <b>Agrégez</b> la consommation pour la débusquer.
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">GroupBy · agrégation</span></div>
+        <div class="kv"><span class="k">Terminal</span><span class="v">02_agregation.ipynb</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">pandas : <code>groupby</code>, <code>sum</code>, <code>sort_values</code></span></div>
+      </div>
+    </div>
+    <div class="elsa rise">« Suivez les ressources. Elles mènent toujours à ceux qui se croient au-dessus du calcul. »<span class="sig">· E. Reye</span></div>
+    <div class="hints rise">
+      <div class="hintbtns">
+        <button class="hintbtn" data-hint="Groupe par 'unite_id', somme la 'quantite', trie en décroissant.">Indice 1</button>
+        <button class="hintbtn" data-hint="L'unité en tête écrase tout le reste, et sa station est « INCONNUE ». Son identifiant a la forme C-XXX.">Indice 2</button>
+      </div>
+      <div class="hintbox"></div>
+    </div>
+  </section>
+
+  <!-- 8 · PAUSE -->
+  <section class="slide" data-break data-pname="Pause" data-minutes="15" data-time="11h00">
+    <div class="break-emoji rise">☕</div>
+    <h2 class="rise">Pause oxygène, 15 min</h2>
+    <p class="lead rise muted">Le chrono de l'Abattage, lui, ne s'arrête pas. Respirez quand même.</p>
+  </section>
+
+  <!-- 9 · ACTE III -->
+  <section class="slide" id="act3" data-pname="Acte III · Le registre verrouillé" data-minutes="90" data-time="11h15">
+    <div class="eyebrow rise">Acte III <span class="sched">11h15 · 90 min</span></div>
+    <h1 class="rise glitch" data-text="Le registre verrouillé">Le registre verrouillé</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent duo"><img src="assets/kane.jpg" alt="Marcus Kane"><img src="assets/jaha.jpg" alt="Chancelier Jaha"><figcaption>Un compte du Conseil a réécrit un log, en pleine nuit. Lequel ?</figcaption></figure>
+        Le Registre Central trace chaque prédiction de CASSANDRA et chaque geste du
+        Conseil. Quelqu'un a <b>réécrit une prédiction à la main</b>, en pleine nuit.
+        <b>Joignez</b> les tables et retrouvez le log de la falsification.
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">SQL · jointure</span></div>
+        <div class="kv"><span class="k">Accès</span><span class="v">Adminer · localhost:8080</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">Adminer + SQL : <code>SELECT</code>, <code>JOIN</code>, <code>WHERE</code></span></div>
+      </div>
+    </div>
+    <div class="hints rise">
+      <div class="hintbtns">
+        <button class="hintbtn" data-hint="Adminer → serveur 'registre', user 'auditeur', mdp 'arche2152', base 'arche'. Explore la table logs.">Indice 1</button>
+        <button class="hintbtn" data-hint="Filtre les logs où action = 'MANUAL_OVERRIDE'. Un seul a eu lieu en pleine nuit (entre 02h et 03h). Son n° sur 4 chiffres = le fragment.">Indice 2</button>
+      </div>
+      <div class="hintbox"></div>
+    </div>
+  </section>
+
+  <!-- 10 · DÉJEUNER -->
+  <section class="slide" data-break data-pname="Déjeuner" data-minutes="60" data-time="13h00">
+    <div class="break-emoji rise">🍽️</div>
+    <h2 class="rise">Ration de survie, 60 min</h2>
+    <p class="lead rise muted">Reprise à 14h00 avec l'acte IV. Le compte à rebours, lui, ne déjeune pas.</p>
+  </section>
+
+  <!-- 11 · ACTE IV -->
+  <section class="slide" id="act4" data-pname="Acte IV · Le message dans la courbe" data-minutes="75" data-time="14h00">
+    <div class="eyebrow rise">Acte IV <span class="sched">14h00 · 75 min</span></div>
+    <h1 class="rise glitch" data-text="Le message dans la courbe">Le message dans la courbe</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent"><img src="assets/octavia.jpg" alt="Octavia Blake"><figcaption>Octavia fait partie des 100. Où vont-ils atterrir ?</figcaption></figure>
+        Avant de disparaître, Elsa a encodé un dernier message dans un jeu de
+        coordonnées. Tracé en nuage de points, il <b>dessine un nombre</b> :
+        le point de largage des 100 envoyés au sol. <b>Visualisez</b>-le.
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">Data Viz · matplotlib</span></div>
+        <div class="kv"><span class="k">Terminal</span><span class="v">04_visualisation.ipynb</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">matplotlib : <code>scatter</code>, <code>axis('equal')</code>, filtrage</span></div>
+      </div>
+    </div>
+    <div class="hints rise">
+      <div class="hintbtns">
+        <button class="hintbtn" data-hint="Scatter de tous les points, puis pense à plt.axis('equal') pour ne pas déformer le dessin.">Indice 1</button>
+        <button class="hintbtn" data-hint="Du bruit masque le message : filtre la colonne groupe == 'signal' et retrace.">Indice 2</button>
+      </div>
+      <div class="hintbox"></div>
+    </div>
+  </section>
+
+  <!-- 12 · ACTE V -->
+  <section class="slide" id="act5" data-pname="Acte V · Le biais de CASSANDRA" data-minutes="60" data-time="15h15">
+    <div class="eyebrow rise">Acte V · le cœur de l'affaire <span class="sched">15h15 · 60 min</span></div>
+    <h1 class="rise glitch" data-text="Le biais de CASSANDRA">Le biais de CASSANDRA</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent"><img src="assets/becca.jpg" alt="Becca"><figcaption>Becca a conçu l'IA. Mais qui a réécrit ses règles ?</figcaption></figure>
+        À <b>niveau de risque égal</b>, CASSANDRA condamne-t-elle certaines stations
+        plus que d'autres ? Comparez <b>Factory</b> et <b>Alpha</b>. L'écart n'est pas
+        un bug : c'est la <em>preuve</em> que le modèle a été conçu pour sacrifier les ouvriers.
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">Analyse · éthique IA</span></div>
+        <div class="kv"><span class="k">Terminal</span><span class="v">05_biais.ipynb</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">pandas : <code>groupby</code>, <code>mean</code>, calcul de ratio</span></div>
+      </div>
+    </div>
+    <div class="hints rise">
+      <div class="hintbtns">
+        <button class="hintbtn" data-hint="La colonne 'condamne' vaut 0/1 : sa moyenne par station = le taux de condamnation.">Indice 1</button>
+        <button class="hintbtn" data-hint="Vérifie d'abord que le risque réel moyen est identique entre stations. Puis fais le RATIO taux(Factory) / taux(Alpha).">Indice 2</button>
+      </div>
+      <div class="hintbox"></div>
+    </div>
+  </section>
+
+  <!-- 14 · ACTE VI -->
+  <section class="slide" id="act6" data-pname="Acte VI · Arrêter l'Abattage" data-minutes="30" data-time="16h15">
+    <div class="eyebrow rise">Acte VI · dénouement <span class="sched">16h15 · 30 min</span></div>
+    <h1 class="rise glitch" data-text="Arrêter l'Abattage">Arrêter l'Abattage</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent"><img src="assets/clarke.jpg" alt="Clarke Griffin"><figcaption>Clarke attend votre preuve pour arrêter l'Abattage.</figcaption></figure>
+        Cinq fragments en main, le tableau est complet : <b>le Conseiller Vance, d'Alpha
+        Station, a reprogrammé CASSANDRA</b> pour épargner l'élite et condamner Factory.
+        Envoyez la commande maître au mainframe, elle dit littéralement ce qu'il faut faire.
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">Synthèse</span></div>
+        <div class="kv"><span class="k">Terminal</span><span class="v">06_final.ipynb</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">la Console : synthèse des 5 fragments</span></div>
+      </div>
+    </div>
+    <div class="elsa rise">« Vous n'avez pas piraté l'IA. Vous avez fait pire pour eux : vous l'avez auditée. »<span class="sig">· E. Reye</span></div>
+  </section>
+
+  <!-- 15 · DÉBRIEF -->
+  <section class="slide" data-pname="Débrief, éthique de l'IA" data-minutes="15" data-time="16h45">
+    <div class="eyebrow rise">Débrief <span class="sched">16h45 · 15 min</span></div>
+    <h2 class="rise">La vraie leçon</h2>
+    <ul class="steps rise">
+      <li>Fallait-il croire CASSANDRA <em>parce que</em> c'était une IA ?</li>
+      <li>Qui est responsable d'un Abattage décidé par un algorithme : la machine, son concepteur, le Conseil qui l'a déployée sans audit ?</li>
+      <li>Comment rendre une IA de ce type <b>auditable</b> et <b>équitable</b> ?</li>
+      <li>Quels biais algorithmiques connais-tu dans le monde réel ?</li>
+    </ul>
+    <div class="elsa rise">« Les données ne mentent pas. Ce sont les gens qui leur font dire ce qu'ils veulent. »<span class="sig">· E. Reye</span></div>
+  </section>
+
+  <!-- 16 · VICTOIRE -->
+  <section class="slide win" data-pname="Fin" data-time="17h00" data-bg style="--bgimg:url(assets/earth.jpg)">
+    <div class="eyebrow rise">Protocole suspendu</div>
+    <h1 class="rise glitch" data-text="MAY WE MEET AGAIN">MAY WE MEET AGAIN</h1>
+    <p class="lead rise">L'Abattage est <b>annulé</b>. La vérité d'Elsa éclate au grand jour.
+      Factory Station est sauvée. Vous avez prouvé qu'une IA n'est jamais neutre, seulement
+      le reflet de ceux qui la programment.</p>
+    <p class="lead rise muted small" style="margin-top:18px">Bravo, auditeurs. Conseil de l'Arche</p>
+    <p class="credits-line rise">Images libres de droits : NASA (domaine public) pour la Terre, la station et la dérive ; photos des actrices et acteurs sous licence Creative Commons (Wikimedia Commons). Détails et attributions dans <b>assets/CREDITS.md</b>.</p>
+  </section>
+
+</main>
+
+<!-- Flèches nav -->
+<button class="nav-arrow prev" aria-label="précédent">‹</button>
+<button class="nav-arrow next" aria-label="suivant">›</button>
+
+<!-- HUD BAS -->
+<footer class="hud-bot">
+  <div class="phase">
+    <span class="ptime idle" id="pTime">--:--</span>
+    <span class="pname" id="pName">· </span>
+    <span id="phaseCtl"><button class="tbtn" onclick="window.dispatchEvent(new KeyboardEvent('keydown',{key:'t'}))" title="démarrer / réinitialiser (T)">▶ / ↺</button></span>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="counter" id="counter"></div>
+</footer>
+
+<!-- AIDE -->
+<div class="help" id="help">
+  <h3>◢◤ COMMANDES DE L'ANIMATEUR</h3>
+  <table>
+    <tr><td><kbd>→</kbd> <kbd>Espace</kbd></td><td>slide suivante</td><td><kbd>←</kbd></td><td>slide précédente</td></tr>
+    <tr><td><kbd>F</kbd></td><td>plein écran</td><td><kbd>G</kbd></td><td>lancer le compte à rebours (8h)</td></tr>
+    <tr><td><kbd>T</kbd></td><td>démarrer / arrêter le timer de phase</td><td><kbd>M</kbd></td><td>son on/off</td></tr>
+    <tr><td><kbd>H</kbd> <kbd>?</kbd></td><td>cette aide</td><td><kbd>R</kbd></td><td>tout réinitialiser</td></tr>
+    <tr><td><kbd>Home</kbd>/<kbd>End</kbd></td><td>première / dernière</td><td>clic sur un point</td><td>aller à la slide</td></tr>
+  </table>
+  <p class="hint">Le compte à rebours et les timers survivent à un rafraîchissement (stockés localement, basés sur l'heure réelle). <kbd>Échap</kbd> pour fermer.</p>
+</div>
+
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

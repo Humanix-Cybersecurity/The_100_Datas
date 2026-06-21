@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}, Console du Conseil</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <header>
+    <div class="brand">
+      <span class="logo">◢◤</span> ARCHE · MAINFRAME CASSANDRA
+    </div>
+    <div class="countdown" id="countdown" data-deadline="{{ deadline_iso }}">
+      ABATTAGE DANS --:--:--
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>{{ title }}</h1>
+      <p class="lore">
+        97 ans après l'apocalypse. L'Arche meurt. Le Conseil s'apprête à
+        <em>envoyer à la dérive dans l'espace</em> des centaines d'habitants sur ordre de l'IA CASSANDRA.
+        L'ingénieure Elsa Reye a caché la preuve d'un truquage avant de disparaître.
+        <strong>Récupérez les 6 fragments. Arrêtez l'Abattage.</strong>
+      </p>
+      <div class="progress">
+        Fragments récupérés : <strong>{{ solved_count }}/{{ total }}</strong>
+      </div>
+    </section>
+
+    {% if finished %}
+    <section class="victory">
+      <h2>🏆 PROTOCOLE SUSPENDU</h2>
+      <p>Vous avez révélé la vérité d'Elsa. Factory Station est sauvée.</p>
+    </section>
+    {% endif %}
+
+    <section class="actes">
+      {% for a in actes %}
+      <article class="acte {{ 'solved' if a.solved else ('active' if a.available else 'locked') }}">
+        <div class="acte-head">
+          <span class="acte-num">{{ '%02d' % a.num }}</span>
+          <div>
+            <h3>{{ a.titre }}</h3>
+            <span class="comp">{{ a.competence }}</span>
+          </div>
+          <span class="status">
+            {% if a.solved %}✓ DÉBLOQUÉ{% elif a.available %}● ACTIF{% else %}🔒 VERROUILLÉ{% endif %}
+          </span>
+        </div>
+
+        {% if a.available %}
+        <p class="brief">{{ a.brief }}</p>
+        {% endif %}
+
+        {% if a.solved %}
+        <p class="unlock">{{ a.unlock }}</p>
+        {% elif a.available %}
+        <form class="flag-form" data-acte="{{ a.id }}">
+          <input type="text" name="flag" placeholder="ARK{...}" autocomplete="off" required>
+          <button type="submit">VALIDER</button>
+        </form>
+        <div class="hint-zone">
+          <button class="hint-btn" data-acte="{{ a.id }}"
+                  {% if a.hints_used >= a.hints_total %}disabled{% endif %}>
+            💡 Indice ({{ a.hints_used }}/{{ a.hints_total }})
+          </button>
+          <div class="hint-text"></div>
+        </div>
+        {% else %}
+        <p class="brief muted">Résous l'acte précédent pour déverrouiller.</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

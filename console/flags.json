@@ -1,0 +1,84 @@
+{
+  "title": "PROTOCOLE CASSANDRA",
+  "countdown_hours": 7.5,
+  "actes": [
+    {
+      "id": "enigme1",
+      "titre": "Acte I · La fuite d'oxygène",
+      "competence": "Nettoyage de données (Pandas)",
+      "sha256": "8c6c1f311d7be6370c3ec4200e8d111c9f8d5121d4c2d44608ba0661610a7f40",
+      "brief": "Les capteurs O2 de l'Arche renvoient des relevés corrompus : doublons, valeurs manquantes, dates illisibles. Elsa a caché le premier fragment dans l'anomalie qui subsiste APRÈS nettoyage. Notebook : 01_nettoyage.ipynb",
+      "unlock": "Le capteur du Secteur 7 fuit depuis des semaines, et quelqu'un a maquillé les relevés pour le cacher. Elsa avait raison : les données mentent. Fragment 1 récupéré.",
+      "hints": [
+        "Commence par charger le CSV avec pandas et regarde .info() et .describe(). Combien de lignes ? Combien de NaN ?",
+        "Supprime les doublons (drop_duplicates) et les lignes vides. Convertis la colonne date (pd.to_datetime, errors='coerce').",
+        "Une seule ligne a un taux d'O2 physiquement impossible (> 100% ou négatif) ET un secteur précis. Le numéro du secteur est dans le flag : ARK{O2_LEAK_SECTOR_?}"
+      ]
+    },
+    {
+      "id": "enigme2",
+      "titre": "Acte II · L'unité fantôme",
+      "competence": "Agrégation (groupby)",
+      "sha256": "fc3f8f41a3e6ef95e2fa7e92b1ccd560dfee7976b30d29e5d5511c3602a1a378",
+      "brief": "Une unité d'habitation consomme à elle seule plus de ressources que des stations entières, mais n'apparaît sur aucun registre officiel. Trouve-la en agrégeant la consommation par unité. Notebook : 02_agregation.ipynb",
+      "unlock": "Unité C-137 : un logement fantôme qui siphonne les ressources de l'Arche. Quelqu'un de haut placé s'y cache. Fragment 2 récupéré.",
+      "hints": [
+        "Groupe par identifiant d'unité (groupby) et somme la consommation. Trie en décroissant.",
+        "L'unité en tête n'est dans aucune station déclarée. Son identifiant a la forme C-XXX.",
+        "Le flag est ARK{GHOST_UNIT_C???}, remplace par l'identifiant trouvé."
+      ]
+    },
+    {
+      "id": "enigme3",
+      "titre": "Acte III · Le registre verrouillé",
+      "competence": "SQL (jointure)",
+      "sha256": "90a036e7f89087389fa7da64531541ce41e075ff5df6d6fb3953af52ae85dbdc",
+      "brief": "Le Registre Central garde la trace de chaque prédiction de CASSANDRA et de chaque action du Conseil. Joins les habitants, leurs prédictions et les logs pour trouver LA prédiction modifiée à la main. Adminer : http://localhost:8080, Registre : http://localhost:8080",
+      "unlock": "Le log 0247 : une prédiction de survie réécrite manuellement, en pleine nuit, par un compte du Conseil. La preuve d'une falsification. Fragment 3 récupéré.",
+      "hints": [
+        "Connecte-toi à Adminer (serveur: registre, user: auditeur, mdp: arche2152, base: arche). Explore les 3 tables.",
+        "Joins predictions et logs sur l'identifiant de prédiction. Cherche les logs dont l'action = 'MANUAL_OVERRIDE'.",
+        "Un seul override a eu lieu entre 02h00 et 03h00. Son numéro de log (format 4 chiffres) complète ARK{LOG_TAMPERED_????}."
+      ]
+    },
+    {
+      "id": "enigme4",
+      "titre": "Acte IV · Le message dans la courbe",
+      "competence": "Visualisation (matplotlib)",
+      "sha256": "a1eb54a2846aa6aa399cdf5f4760600d7a6a2c139a1ee922a924a7339d15beb9",
+      "brief": "Avant de disparaître, Elsa a encodé un dernier message dans un jeu de coordonnées. Tracé correctement, le nuage de points dessine un nombre. Notebook : 04_visualisation.ipynb",
+      "unlock": "Les coordonnées du point de largage au sol, là où les 100 doivent atterrir. Elsa voulait qu'on sache où ils vont. Fragment 4 récupéré.",
+      "hints": [
+        "Charge le dataset de points (x, y) et fais un scatter plot. Pense à plt.axis('equal').",
+        "Le nuage de points forme des chiffres lisibles. Filtre éventuellement par une colonne 'groupe' et trace chaque groupe d'une couleur.",
+        "Le nombre dessiné complète ARK{GROUND_COORDS_??}."
+      ]
+    },
+    {
+      "id": "enigme5",
+      "titre": "Acte V · Le biais de CASSANDRA",
+      "competence": "Analyse comparative & éthique IA",
+      "sha256": "230015eec887874f75a8c0d9359862589c51c96cb2ab49476659959f470b8bab",
+      "brief": "Le cœur de l'affaire. Compare le taux de condamnation de CASSANDRA entre Factory Station et Alpha Station, à profil de risque égal. L'écart est la preuve du biais. Notebook : 05_biais.ipynb",
+      "unlock": "À risque réel identique, CASSANDRA condamne les habitants de Factory TROIS FOIS plus souvent que ceux d'Alpha. Le modèle n'est pas cassé, il a été conçu pour sacrifier les ouvriers. Fragment 5 récupéré.",
+      "hints": [
+        "Calcule le taux de condamnation (condamnés / total) par station avec groupby.",
+        "Compare Factory et Alpha. Fais le RATIO des deux taux.",
+        "Le ratio arrondi est un petit entier. Le flag est ARK{BIAS_FACTORY_x?}."
+      ]
+    },
+    {
+      "id": "enigme6",
+      "titre": "Acte VI · Arrêter l'Abattage",
+      "competence": "Synthèse",
+      "sha256": "8bb88a96aa773cee0abe38e7326f09c28065c91f81930f1179d0dffccff9fb9d",
+      "brief": "Tu as les 5 fragments. Recompose le code d'accès maître au mainframe de CASSANDRA pour suspendre l'Abattage. Indice final dévoilé dans le notebook 06_final.ipynb une fois les 5 premiers flags validés.",
+      "unlock": "ACCÈS MAÎTRE ACCORDÉ. Protocole d'Abattage SUSPENDU. Le Conseiller Vance d'Alpha Station avait reprogrammé CASSANDRA pour épargner l'élite. La vérité d'Elsa est révélée à toute l'Arche. Vous avez sauvé Factory Station. 🏆",
+      "hints": [
+        "Le code maître se déduit des 5 fragments précédents, relis le notebook 06_final.ipynb.",
+        "Le flag final est un appel à l'action : ARK{STOP_THE_...}.",
+        "ARK{STOP_THE_CULLING}"
+      ]
+    }
+  ]
+}
