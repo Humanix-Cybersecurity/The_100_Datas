@@ -190,6 +190,8 @@
     if (a.dataset.action === "next") next();
   });
   $$(".nav-arrow").forEach((b) => b.onclick = () => b.classList.contains("next") ? next() : prev());
+  const phaseBtn = $("#phaseBtn");
+  if (phaseBtn) phaseBtn.onclick = togglePhase;   // bouton ▶/↺ du timer de phase
 
   // petit toast
   let toastT;
