@@ -72,10 +72,10 @@
       "titre": "Acte VI · Arrêter l'Abattage",
       "competence": "Synthèse",
       "sha256": "8bb88a96aa773cee0abe38e7326f09c28065c91f81930f1179d0dffccff9fb9d",
-      "brief": "Tu as les 5 fragments. Recompose le code d'accès maître au mainframe de CASSANDRA pour suspendre l'Abattage. Indice final dévoilé dans le notebook 06_final.ipynb une fois les 5 premiers flags validés.",
+      "brief": "Acte final, pas d'analyse : tu as déjà toutes les preuves. Le mainframe n'accepte qu'UNE commande pour suspendre l'Abattage. Elle est expliquée (et affichée) dans le notebook 06_final.ipynb. C'est un ordre, en anglais, la langue du système.",
       "unlock": "ACCÈS MAÎTRE ACCORDÉ. Protocole d'Abattage SUSPENDU. Le Conseiller Vance d'Alpha Station avait reprogrammé CASSANDRA pour épargner l'élite. La vérité d'Elsa est révélée à toute l'Arche. Vous avez sauvé Factory Station. 🏆",
       "hints": [
-        "Le code maître se déduit des 5 fragments précédents, relis le notebook 06_final.ipynb.",
+        "Ouvre le notebook 06_final.ipynb : il explique la commande d'arrêt et l'affiche quand tu exécutes la cellule.",
         "Le flag final est un appel à l'action : ARK{STOP_THE_...}.",
         "ARK{STOP_THE_CULLING}"
       ]
