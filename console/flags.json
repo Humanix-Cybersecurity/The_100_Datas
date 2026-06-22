@@ -79,6 +79,19 @@
         "Le flag final est un appel à l'action : ARK{STOP_THE_...}.",
         "ARK{STOP_THE_CULLING}"
       ]
+    },
+    {
+      "id": "enigme7",
+      "titre": "Acte VII · Praimfaya : le dernier abri (BONUS)",
+      "competence": "Fusion de données (merge) & filtres",
+      "sha256": "80e505035e5c14750fcf96410217e355372401c1f780fbf163a09870c6a10713",
+      "brief": "BONUS, pour les équipes rapides. L'Abattage est suspendu, mais les réacteurs fondent : Praimfaya, la vague de radiation, arrive. Un SEUL site au sol est survivable. Croise les 3 fichiers de relevés et trouve le bunker. Notebook : 07_praimfaya.ipynb",
+      "unlock": "Secteur J7 (Polis) : radiation faible, eau potable, assez de place, air respirable. Le dernier refuge de l'humanité. Vous avez sauvé les survivants deux fois. May we meet again. 🌍",
+      "hints": [
+        "Charge les 3 fichiers et fusionne-les sur 'site_id' avec pandas.merge(), puis enchaîne un 2e merge.",
+        "Filtre sur les 4 conditions EN MÊME TEMPS : radiation_msv < 100, eau_potable == 1, capacite >= 50, indice_o2 >= 19. Il ne doit rester qu'un site.",
+        "Le secteur de l'unique abri est J7 : ARK{BUNKER_J7}."
+      ]
     }
   ]
 }

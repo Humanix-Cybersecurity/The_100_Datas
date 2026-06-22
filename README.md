@@ -89,6 +89,10 @@ Touche `H` dans la présentation pour la liste des raccourcis (avancer, plein é
 | IV | Le message dans la courbe | Data Viz (matplotlib) | Jupyter · `04_visualisation.ipynb` |
 | V | Le biais de CASSANDRA | Analyse & éthique IA | Jupyter · `05_biais.ipynb` |
 | VI | Arrêter l'Abattage | Synthèse | Jupyter · `06_final.ipynb` |
+| VII | Praimfaya : le dernier abri **(bonus)** | Fusion de données (`merge`) & filtres | Jupyter · `07_praimfaya.ipynb` |
+
+> 🌍 L'**acte VII est un bonus** pour les équipes rapides : il apparaît dans la Console
+> une fois les 6 premiers fragments validés. Plus difficile (il faut croiser 3 fichiers).
 
 Chaque notebook vous guide. Quand vous trouvez un code `ARK{...}`, validez-le dans
 la **Console**. Les actes se débloquent **dans l'ordre**.
