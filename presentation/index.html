@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PROTOCOLE CASSANDRA, Conseil de l'Arche</title>
-<link rel="stylesheet" href="deck.css?v=7">
+<link rel="stylesheet" href="deck.css?v=8">
 </head>
 <body>
 <div class="bg-grid"></div>
@@ -309,6 +309,33 @@
     <p class="credits-line rise">Images libres de droits : NASA (domaine public) pour la Terre, la station et la dérive ; photos des actrices et acteurs sous licence Creative Commons (Wikimedia Commons). Détails et attributions dans <b>assets/CREDITS.md</b>.</p>
   </section>
 
+  <!-- 18 · BONUS PRAIMFAYA -->
+  <section class="slide" id="act7" data-pname="Acte VII · Praimfaya (BONUS)" data-time="bonus" data-bg style="--bgimg:url(assets/earth.jpg)">
+    <div class="eyebrow rise">Acte VII · BONUS <span class="sched">pour les équipes rapides</span></div>
+    <h1 class="rise glitch" data-text="Praimfaya">Praimfaya</h1>
+    <div class="mission rise">
+      <div class="objectif">
+        <figure class="accent"><img src="assets/octavia.jpg" alt="Octavia Blake"><figcaption>Les 100 sont au sol. Où trouver un abri sûr ?</figcaption></figure>
+        L'Abattage est suspendu… mais les réacteurs fondent. <b>Praimfaya</b>, la vague
+        de radiation, balaie la Terre. Il reste <b>un seul</b> site survivable au sol.
+        <b>Croisez</b> les trois fichiers de relevés et trouvez le bunker.
+      </div>
+      <div class="panel">
+        <h3>Dossier de mission</h3>
+        <div class="kv"><span class="k">Compétence</span><span class="v">Fusion de données</span></div>
+        <div class="kv"><span class="k">Terminal</span><span class="v">07_praimfaya.ipynb</span></div>
+        <div class="kv"><span class="k">Outils</span><span class="v">pandas : <code>merge</code>, filtres multiples</span></div>
+      </div>
+    </div>
+    <div class="hints rise">
+      <div class="hintbtns">
+        <button class="hintbtn" data-hint="Charge les 3 fichiers et fusionne-les sur 'site_id' avec pandas.merge() (enchaîne un 2e merge).">Indice 1</button>
+        <button class="hintbtn" data-hint="Garde le seul site qui remplit les 4 conditions : radiation_msv < 100, eau_potable == 1, capacite >= 50, indice_o2 >= 19.">Indice 2</button>
+      </div>
+      <div class="hintbox"></div>
+    </div>
+  </section>
+
 </main>
 
 <!-- Flèches nav -->
@@ -341,6 +368,6 @@
 
 <div class="scanlines"></div>
 <div class="vignette"></div>
-<script src="deck.js?v=7"></script>
+<script src="deck.js?v=8"></script>
 </body>
 </html>
